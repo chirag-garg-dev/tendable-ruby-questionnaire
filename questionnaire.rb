@@ -46,6 +46,8 @@ class Questionnaire
       all_answers = @store[:answers] || []
     end
 
+    return 0.0 if all_answers.empty?
+
     total_yes = all_answers.flatten.count { |answer| %w[yes y].include?(answer) }
     total_questions = all_answers.flatten.size
     (100.0 * total_yes / total_questions).round(2)
